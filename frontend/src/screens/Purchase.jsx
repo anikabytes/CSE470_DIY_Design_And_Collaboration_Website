@@ -1,10 +1,12 @@
-import React from 'react'
-
 const Purchase = () => {
   return (
-    <div>
-        <h1>Hello</h1>
+    <div className="w-screen h-screen bg-green-200">
+      <div className=" text-center text-3xl text-red-500 py-10 ">
+        Make Purchase 
+      </div>
+      
     </div>
+
   )
 }
 
