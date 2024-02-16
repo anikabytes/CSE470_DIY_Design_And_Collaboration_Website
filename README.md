@@ -1,5 +1,25 @@
 # CSE470_DIY_Design_And_Collaboration_Website
 
+
+# RISAT RAHAMAN 
+
+## Login 
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/c8899e50-b931-456f-92a8-902f309495bd)
+
+## Register 
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/07d06a43-c9c9-4f4c-bc06-44d4780e3d7c)
+
+## Profile Page 
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/05df6ce1-72e9-4901-81bd-05bf31be7410)
+
+## Edit Profile 
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/3d9ccc63-9fc7-44f7-ae2f-d75c975acd67)
+
+## Update Profile 
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/9708650a-335a-464c-8aaa-eff4ffcab67d)
+
+
+
 # ANIKA ISLAM 
 
 ## Navigation bar 
