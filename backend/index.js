@@ -3,6 +3,7 @@ import userRoutes from './routes/userRoutes.js'
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import cookieParser from 'cookie-parser';
+import product from './routes/productroute.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -35,6 +36,10 @@ app.listen(port, () => {
     console.log(`Port ${port}`);
 })
 
+const clothes = express();
+clothes.use(express.json());
+clothes.use(cors());
+clothes.use('/dress',product);
 
 const connectDB = async () => {
     try {
