@@ -2,6 +2,10 @@
 import {useState} from "react";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
+<<<<<<< Updated upstream
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 
 const Navbar = () => {
@@ -9,6 +13,7 @@ const Navbar = () => {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
+<<<<<<< Updated upstream
 
     // const ClothesDropdown = () => {
 
@@ -50,6 +55,8 @@ const Navbar = () => {
         </div>
     </>
 
+=======
+>>>>>>> Stashed changes
     return (
             <nav>
                <div className="h-10vh flex justify-between z-50  text-white lg:py-5 px-20 py-4 transition bg-orange-300">
@@ -61,6 +68,7 @@ const Navbar = () => {
                     <div className="lg:flex md:flex lg:flex-1 times center justify-end font-normal hidden">
                         <div className="flex-10">
                             <ul className="flex gap-8 mr-16 text-[18px]">
+<<<<<<< Updated upstream
                                 <CustomLink spy={true} smooth={true} href = "\home">
                                     <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
                                         Home 
@@ -84,6 +92,31 @@ const Navbar = () => {
                                         Profile
                                     </li>
                                 </CustomLink>
+=======
+                                <Link to = "/">
+                                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                        Home 
+                                    </li>
+                                </Link>
+                                
+                                <Link to ="/clothes">
+                                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer ">
+                                        Clothes
+                                    </li>
+                                </Link>
+
+                                <Link to='/purchase'>
+                                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                        Purchase 
+                                    </li>
+                                </Link>
+
+                                <Link to='/profile'>
+                                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                        Profile
+                                    </li>
+                                </Link>
+>>>>>>> Stashed changes
                             </ul>
                         </div>
                     </div>
@@ -100,6 +133,7 @@ const Navbar = () => {
     )
 }
 
+<<<<<<< Updated upstream
 function CustomLink ({href, children, ...props}) {
     const path = window.location.pathname 
     return (
@@ -110,6 +144,8 @@ function CustomLink ({href, children, ...props}) {
         </li>
     )
 }
+=======
+>>>>>>> Stashed changes
 
 export default Navbar
 

@@ -4,8 +4,11 @@ import Profile from './screens/Profile';
 import Clothes from './screens/Clothes';
 import Purchase from './screens/Purchase';
 import Home from './screens/Home';
+<<<<<<< Updated upstream
 import Navbar from './component/Navbar';
 
+=======
+>>>>>>> Stashed changes
 
 import {
   BrowserRouter,
@@ -15,6 +18,7 @@ import {
 import UpdateProfile from './screens/UpdateProfile';
 
 function App() {
+<<<<<<< Updated upstream
   let component 
 
   switch (window.location.pathname) {
@@ -44,6 +48,11 @@ function App() {
       <Navbar />
       {component}
     </>
+=======
+
+  return (
+    <div>
+>>>>>>> Stashed changes
 
     <BrowserRouter>
       <Routes>
@@ -52,9 +61,16 @@ function App() {
         <Route path='/register' element={<Register />}/>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/updateProfile' element={<UpdateProfile />}/>
+<<<<<<< Updated upstream
         {/* <Route path='/home' element={<Home />}/>
         <Route path='/purchase' element={<Purchase />}/>
         <Route path='/clothes' element={<Clothes />}/> */}
+=======
+        <Route path='/' element={<Home />}/>
+        <Route path='/clothes' element={<Clothes />}/>
+        <Route path='/purchase' element={<Purchase />}/>
+
+>>>>>>> Stashed changes
 
       </Routes>
     </BrowserRouter>

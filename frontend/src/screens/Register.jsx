@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../component/Navbar.jsx';
 
 const Register = () => {
     const [fname, setFname] = useState('');
@@ -41,7 +42,9 @@ const Register = () => {
     };
 
   return (
-    <Container className='my-3'>
+    <div>
+        <Navbar />
+        <Container className='my-3'>
         <Row className='justify-content-center'>
             <Col xs={10} md={5} className='card p-5'>
                 <h1>REGISTER</h1>
@@ -99,7 +102,7 @@ const Register = () => {
                     </Form.Group>
 
                     <div className="d-flex justify-content-center align-items-center">
-                        <Button type='submit' className='mt-3' style={{width: '100px'}}>REGISTER</Button>
+                        <Button type='submit' className='mt-3 bg-orange-300' style={{width: '100px'}}>REGISTER</Button>
                     </div>
                 
                 </Form>
@@ -114,6 +117,8 @@ const Register = () => {
         </Row>
 
     </Container>
+    </div>
+    
 
     
     

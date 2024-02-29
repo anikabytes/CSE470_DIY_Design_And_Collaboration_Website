@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../component/Navbar.jsx";
 
 const Profile = () => {
 
@@ -47,7 +48,9 @@ const Profile = () => {
     }
     
     return (
-      <Container className='mt-5 justify-content-center'>
+      <div>
+        <Navbar />
+        <Container className='mt-5 justify-content-center'>
         <Row className='justify-content-center'>
           <Col md={3} className='justify-content-center'>
               <h1>Profile</h1>
@@ -55,14 +58,16 @@ const Profile = () => {
               <h5 className='my-3'>Name: {fname} {lname}</h5>
               <h5 className='my-3'>Email: {email}</h5>
               <h5 className='my-3'>Address: {address}</h5>
-              <Button className="my-2 d-block" style={{width:'100px'}} onClick={updateSubmit}>UPDATE PROFILE</Button>
-              <Button style={{width:'100px'}} onClick={logoutSubmit}>LOGOUT</Button>
+              <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={updateSubmit}>UPDATE PROFILE</Button>
+              <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={logoutSubmit}>LOGOUT</Button>
           </Col>
           
         </Row>
       
 
   </Container>
+      </div>
+      
     );
 }
 
