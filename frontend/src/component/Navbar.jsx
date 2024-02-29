@@ -44,6 +44,8 @@ const Navbar = () => {
                                         Profile
                                     </li>
                                 </Link>
+
+
                             </ul>
                         </div>
                     </div>

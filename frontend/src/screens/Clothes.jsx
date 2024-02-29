@@ -12,10 +12,10 @@ const Clothes = () => {
           View Designs 
         </div>
         <Link to = "/design"
-          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-           // Call navigateToDesign function on button click
+          className="bg-green-500 fixed-bottom-100 right-100 m-100 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+  
         >
-          Go to Design
+          Customise Your Dress 
         </Link>
         </div>
     </div>
