@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../component/Navbar.jsx"
 
 const UpdateProfile = () => {
     const [fname, setFname] = useState('');
@@ -53,7 +54,9 @@ const UpdateProfile = () => {
     };
 
   return (
-    <Container className='my-3'>
+    <div>
+      <Navbar />
+      <Container className='my-3'>
         <Row className='justify-content-center'>
             <Col xs={10} md={5} className='card p-5'>
                 <h1>UPDATE PROFILE</h1>
@@ -116,6 +119,8 @@ const UpdateProfile = () => {
         </Row>
 
     </Container>
+    </div>
+    
     
   );
 }

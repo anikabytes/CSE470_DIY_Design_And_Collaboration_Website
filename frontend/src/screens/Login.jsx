@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../component/Navbar.jsx';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,7 +37,9 @@ const Login = () => {
   };
 
   return (
-    <Container className='my-5'>
+    <div>
+      <Navbar />
+      <Container className='my-5'>
         <Row className='justify-content-center'>
             <Col xs={10} md={5} className='card p-5'>
                 <h1>LOG IN</h1>
@@ -64,7 +67,7 @@ const Login = () => {
                   </Form.Group>
 
                   <div className="d-flex justify-content-center align-items-center">
-                  <Button type='submit' className='mt-3' style={{width: '100px'}}>LOG IN</Button>
+                  <Button type='submit' className='mt-3 bg-orange-300' style={{width: '100px'}}>LOG IN</Button>
                   </div>
                 
                 </Form>
@@ -79,6 +82,8 @@ const Login = () => {
         </Row>
 
     </Container>
+    </div>
+    
   );
 }
 
