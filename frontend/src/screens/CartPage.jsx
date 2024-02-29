@@ -1,9 +1,10 @@
 import React from 'react';
+import Navbar from "../component/Navbar.jsx";
 
 const CartPage = () => {
     const orderSummary = [
-        { id: "E:\\s1.jpg", name: "Shirt", price: 20 },
-        { id: "E:\\s1.jpg", name: "Pants", price: 30 },
+        { id: "/public/s1.jpg", name: "Shirt", price: 20 },
+        { id: "/public/s1.jpg", name: "Pants", price: 30 },
     ];
 
     const generateOrderSummary = () => {
@@ -11,9 +12,10 @@ const CartPage = () => {
         let total = 0;
 
         if (orderSummary.length === 0) {
-            summary = '<h2> Cart is empty! </h2>';
+            summary = "<strong> Cart is empty! </strong>";
         } else {
-            summary+= `<h1> Order Summary  </h1>` ;
+            summary+= `<strong> Order Summary  </strong> <br>` ;
+            summary+= `<br>`;
             orderSummary.forEach(item => {
                 summary += `<p>Item: ${item.name} <br>`;
                 summary += `Price: ${item.price}  <br>`;
@@ -38,16 +40,21 @@ const CartPage = () => {
         let total = 0;
 
         if (orderSummary.length === 0) {
-            det = '<h1> Empty! </h1>';
+            det = '<strong> Empty! </strong>';
         } else {
-            det += `<h1> Order Details </h1>`;
+            det += `<strong> Order Details </strong>  <br>`;
             
             orderSummary.forEach(item => {
-                det += ` <img src="${item.id}" alt="${item.name} " style="width: 100px; height: 100px; margin-right: 10px;">  <br>`;
+                det +=`<br>`;
+                det += `<div style="display: flex; align-items: center;">`;
+                det += ` <img src="${item.id}" alt="${item.name}" style="width: 150px; height: 150px; margin-right: 10px;">`;
+                det += `<div>`;
                 det += `Item: ${item.name} <br>`;
-                det += `Price:${item.price} `;
-                det +=`<button style="margin-left: 30px;" onclick="removeItem('${item.name}')">Remove</button> <br>`
-
+                det += `Price: ${item.price} `;
+                det += `</div>`;
+                det += `<button style="margin-left: 30px; background-color: red; color: black;" onclick="removeItem('${item.name}')">Remove</button> <br>`;
+                det += `</div>`;
+                
                 total += item.price;
             });
             det += `<strong> Total: ${total} </strong>`;
@@ -58,14 +65,12 @@ const CartPage = () => {
     };
 
     return (
-        <div>
-            <div style={{ backgroundColor: '#FFA500', width: '100%', height: '80px', padding: '20px', position: 'fixed', top: 0, left: 0 }}>
-                <h1 style={{ margin: 0, color: 'white' }}>ARTisTs</h1>
-            </div>
-            <div style={{ position: 'absolute', top: '80px', left: '15px',width: '75%', height:`${counth()*1.22}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
+        <div className="bg-purple-200 w-screen h-screen">
+            <Navbar />
+            <div style={{ position: 'center', top: '85px', left: '300px',width: '50%', height:`${counth()*2.3}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
                 {generateOrderdet()}    
             </div>         
-            <div style={{ position: 'absolute', top: '80px', right: '10px',width: '18%', height:`${counth()}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
+            <div style={{ position: 'absolute', top: '85px', right: '100px',width: '18%', height:`${counth()}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
                 {generateOrderSummary()}
             </div>
 
