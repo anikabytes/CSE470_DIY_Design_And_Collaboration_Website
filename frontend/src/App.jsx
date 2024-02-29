@@ -4,6 +4,7 @@ import Profile from './screens/Profile';
 import Clothes from './screens/Clothes';
 import Purchase from './screens/Purchase';
 import Home from './screens/Home';
+import Design from './screens/Design';
 
 import {
   BrowserRouter,
@@ -27,6 +28,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/clothes' element={<Clothes />}/>
         <Route path='/purchase' element={<Purchase />}/>
+        <Route path='/design' element={<Design />}/>
 
 
       </Routes>
