@@ -67,7 +67,7 @@ const CartPage = () => {
     return (
         <div className="bg-purple-200 w-screen h-screen">
             <Navbar />
-            <div style={{ position: 'center', top: '85px', left: '300px',width: '50%', height:`${counth()*2.3}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
+            <div style={{ position: 'absolute', top: '85px', left: '300px',width: '50%', height:`${counth()*2.3}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
                 {generateOrderdet()}    
             </div>         
             <div style={{ position: 'absolute', top: '85px', right: '100px',width: '18%', height:`${counth()}px` , backgroundColor: '#f0f0f0', padding: '10px' }}>
