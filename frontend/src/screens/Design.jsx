@@ -8,6 +8,7 @@ const Design = () => {
   const [dressSize, setDressSize] = useState('');
   const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
   const [text, setText] = useState('');
+  const [fontStyle,setFontStyle] = useState('Arial');
   const [fontSize, setFontSize] = useState(25);
   const [textPosition, setTextPosition] = useState({ x: 50, y: 50});
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -30,7 +31,7 @@ const Design = () => {
 
         ctx.drawImage(image, 0, 0);
 
-        ctx.font = `${fontSize}px Arial`;
+        ctx.font = `${fontSize}px ${fontStyle}`;
         ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
         ctx.fillText(text, textPosition.x, textPosition.y);
       };
@@ -65,6 +66,7 @@ const Design = () => {
     console.log("Text Color:", color);
     console.log("Text:", text);
     console.log("Font Size:", fontSize);
+    console.log("Font Style:",fontStyle)
     console.log("Save image:", canvasRef.current.toDataURL());
   };
 
@@ -92,6 +94,10 @@ const Design = () => {
   const handleColorChange = (newColor) => {
     setColor(newColor.rgb);
   };
+
+  const handleFontStylesChange = (event) => {
+    setFontStyle(event.target.value);
+  }
 
   const handleMouseDown = (event) => {
     isDraggingRef.current = true;
@@ -122,6 +128,13 @@ const Design = () => {
     isDraggingRef.current = false;
   };
 
+  const fontStyles = [
+    'Arial',
+    'Vardana',
+    'Times New Roman',
+    'Courier New',
+    'Georgia',
+  ]
   const sizeStyles = {
     Male_S: { width: '150px', height: '200px' },
     Male_M: { width: '200px', height: '250px' },
@@ -174,6 +187,15 @@ const Design = () => {
             )}
           </select>
         )}
+        <select value={fontStyles} onChange={handleFontStylesChange} className="mt-2 py-2 border rounded-lg bg-white">
+          {
+            
+            fontStyles.map(style => (
+              <option key={style} value={style}>{style}</option>
+            ))
+          }
+          
+        </select>
         <input 
           type="text" 
           value={text} 
