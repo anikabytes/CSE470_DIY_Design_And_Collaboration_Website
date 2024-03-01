@@ -4,7 +4,7 @@ import Profile from './screens/Profile';
 import Clothes from './screens/Clothes';
 import Purchase from './screens/Purchase';
 import Home from './screens/Home';
-import showitems from './screens/showitems'
+import ShowItems from './screens/showitems'
 import additems from './screens/additems'
 import deleteitem from './screens/deleteitem'
 import searchitems from './screens/searchitems'
