@@ -2,7 +2,7 @@ import Login from './screens/Login'
 import Register from './screens/Register'
 import Profile from './screens/Profile';
 import Clothes from './screens/Clothes';
-import Purchase from './screens/Purchase';
+import CartPage from './screens/CartPage';
 import Home from './screens/Home';
 import Design from './screens/Design';
 
@@ -27,7 +27,7 @@ function App() {
         <Route path='/updateProfile' element={<UpdateProfile />}/>
         <Route path='/' element={<Home />}/>
         <Route path='/clothes' element={<Clothes />}/>
-        <Route path='/purchase' element={<Purchase />}/>
+        <Route path='/CartPage' element={<CartPage />}/>
         <Route path='/design' element={<Design />}/>
 
 

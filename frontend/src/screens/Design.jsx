@@ -4,6 +4,11 @@ import { SketchPicker } from 'react-color';
 const Design = () => {
   const [imageData, setImageData] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [logoData, setLogoData] = useState(null);
+  const [logoImage, setLogoImage] = useState(null);
+  const [logoPosition, setLogoPosition] = useState({ x: 50, y: 50 });
+  const [logoWidth, setLogoWidth] = useState(50); // Initial width of the logo
+  const [logoHeight, setLogoHeight] = useState(50);
   const [gender, setGender] = useState('');
   const [dressSize, setDressSize] = useState('');
   const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
@@ -17,6 +22,7 @@ const Design = () => {
   const canvasRef = useRef(null);
   const isDraggingRef = useRef(false);
   const prevMousePositionRef = useRef({ x: 0, y: 0 });
+  const draggingItemRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,21 +36,36 @@ const Design = () => {
         canvas.height = image.height;
 
         ctx.drawImage(image, 0, 0);
-
-        ctx.font = `${fontSize}px ${fontStyle}`;
+        if (logoImage) {
+          const logoImg = new Image();
+          logoImg.src = logoImage;
+          logoImg.onload = () => {
+            ctx.drawImage(logoImg, logoPosition.x, logoPosition.y, logoWidth, logoHeight);
+          };
+        }
+        ctx.font = `${fontSize}px Arial`;
         ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
         ctx.fillText(text, textPosition.x, textPosition.y);
       };
     } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-  }, [imageData, color, text, fontSize, textPosition]);
+  }, [imageData, logoImage, logoPosition, logoWidth, logoHeight, color, text, fontSize, textPosition]);
+
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
     const reader = new FileReader();
     reader.onload = () => {
       setImageData(reader.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+  const handleLogoChange = (event) => {
+    setLogoData(event.target.files[0]);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setLogoImage(reader.result);
     };
     reader.readAsDataURL(event.target.files[0]);
   };
@@ -91,32 +112,69 @@ const Design = () => {
     setFontSize(parseInt(event.target.value));
   };
 
+  const handleLogoWidthChange = (event) => {
+    setLogoWidth(parseInt(event.target.value));
+  }; 
+  const handleLogoHeightChange = (event) => {
+    setLogoHeight(parseInt(event.target.value));
+  };
+
+
   const handleColorChange = (newColor) => {
     setColor(newColor.rgb);
   };
+
+  const handleMouseDown = (event) => {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+  
+    // Check if the mouse is within the bounds of the text
+    if (
+      mouseX >= textPosition.x &&
+      mouseX <= textPosition.x + (text.length * fontSize * 0.6) &&
+      mouseY >= textPosition.y - fontSize &&
+      mouseY <= textPosition.y
+    ) {
+      isDraggingRef.current = true;
+      draggingItemRef.current = 'text';
+    } else {
+      // Check if the mouse is within the bounds of the logo
+      if (
+        mouseX >= logoPosition.x &&
+        mouseX <= logoPosition.x + logoWidth &&
+        mouseY >= logoPosition.y &&
+        mouseY <= logoPosition.y + logoHeight
+      ) {
+        isDraggingRef.current = true;
+        draggingItemRef.current = 'logo';
+      }
+    }
+  
 
   const handleFontStylesChange = (event) => {
     setFontStyle(event.target.value);
   }
 
-  const handleMouseDown = (event) => {
-    isDraggingRef.current = true;
-    prevMousePositionRef.current = {
-      x: event.clientX,
-      y: event.clientY
-    };
-  };
-
+    
   const handleMouseMove = (event) => {
     if (isDraggingRef.current) {
       const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
+      const rect = canvas.getBoundingClientRect();
       const dx = event.clientX - prevMousePositionRef.current.x;
       const dy = event.clientY - prevMousePositionRef.current.y;
-      setTextPosition({
-        x: textPosition.x + dx,
-        y: textPosition.y + dy
-      });
+      if (draggingItemRef.current === 'text') {
+        setTextPosition({
+          x: textPosition.x + dx,
+          y: textPosition.y + dy
+        });
+      } else if (draggingItemRef.current === 'logo') {
+        setLogoPosition({
+          x: logoPosition.x + dx,
+          y: logoPosition.y + dy
+        });
+      }
       prevMousePositionRef.current = {
         x: event.clientX,
         y: event.clientY
@@ -126,6 +184,7 @@ const Design = () => {
 
   const handleMouseUp = () => {
     isDraggingRef.current = false;
+    draggingItemRef.current=null;
   };
 
   const fontStyles = [
@@ -187,6 +246,11 @@ const Design = () => {
             )}
           </select>
         )}
+
+        <input type="file" onChange={handleLogoChange} className="py-2 px-4 border rounded-lg bg-white mt-4" />
+        <button onClick={() => {setLogoWidth(logoWidth+10);setLogoHeight(logoHeight + 10);}} style={{ backgroundColor: 'white', color: 'black' ,borderRadius:'10px', padding:'5px 8px', cursor:'pointer',marginTop: '10px'}}>Increase Size</button>
+        
+        <button onClick={() => {setLogoWidth(logoWidth -10);setLogoHeight(logoHeight- 10);}} style={{ backgroundColor: 'white', color: 'black' ,borderRadius:'10px', padding:'5px 8px', cursor:'pointer', marginTop:'10px',}}>Decrease Size</button>
         <select value={fontStyles} onChange={handleFontStylesChange} className="mt-2 py-2 border rounded-lg bg-white">
           {
             
@@ -234,4 +298,3 @@ const Design = () => {
 };
 
 export default Design;
-

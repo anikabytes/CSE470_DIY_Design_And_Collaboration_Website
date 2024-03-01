@@ -3,7 +3,7 @@ import {useState} from "react";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-
+import CartPage from './../screens/CartPage';
 
 const Navbar = () => {
 
@@ -65,9 +65,9 @@ const Navbar = () => {
                                     </li>
                                 </Link>
 
-                                <Link to='/purchase'>
+                                <Link to='/CartPage'>
                                     <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
-                                        Purchase 
+                                        Purchase
                                     </li>
                                 </Link>
 
