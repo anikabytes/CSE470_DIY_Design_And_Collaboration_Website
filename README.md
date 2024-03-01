@@ -18,7 +18,7 @@
 
 
 # RISAT RAHAMAN
-## They can save their designed dress image
+## The user can save their designed dress image
 ![Screenshot 2024-03-02 001949](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/bd6c759f-96e7-4f9f-b2fa-cff77dfcef5a)
 
 ## They can view their saved designs in their profile page
