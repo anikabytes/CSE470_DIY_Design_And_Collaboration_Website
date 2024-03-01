@@ -4,7 +4,7 @@
 ## This is the design portal
 ![423472441_707525368219819_4148238291224511408_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/0b2ecbc9-8375-4969-be6a-b004f68015ae)
 
-## The user can change gender and color of the imported dress image. They can also add custom text on top of them and change their size.
+## The user can change gender and size of the imported dress image. They can also add custom text on top of them and change their color and size.
 ![423541959_1532746797503703_1484120866041091355_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/c033be7a-5557-47ec-95f0-7ac221f1f797)
 ![423455206_952710032883194_4135447507468537827_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/5c23166d-8845-4395-8b54-63f5ac6f7aa3)
 
