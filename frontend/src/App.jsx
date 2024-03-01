@@ -4,6 +4,11 @@ import Profile from './screens/Profile';
 import Clothes from './screens/Clothes';
 import Purchase from './screens/Purchase';
 import Home from './screens/Home';
+import showitems from './screens/showitems'
+import additems from './screens/additems'
+import deleteitem from './screens/deleteitem'
+import searchitems from './screens/searchitems'
+import viewitem from './screens/viewitem'
 
 import {
   BrowserRouter,
@@ -27,6 +32,12 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/clothes' element={<Clothes />}/>
         <Route path='/purchase' element={<Purchase />}/>
+        <Route path="/" element = {showitems} />
+        <Route path="/dress/details/:id" element = {viewitem} />
+        <Route path="/dress/addproduct" element = {additems} />
+        <Route path="/dress/search/:searchString" element = {searchitems} />
+        <Route path="/dress/delete/:id" element = {deleteitem} />
+        
 
 
       </Routes>
