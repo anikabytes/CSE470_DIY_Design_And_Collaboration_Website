@@ -27,5 +27,7 @@
 
 # TANJILUR RAHMAN
 
+The products available are displayed here
+![Screenshot 2024-03-02 015716](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/6b3c517f-b822-4bf2-b6e2-6a4ff8021973)
 
 
