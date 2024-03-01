@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SketchPicker } from 'react-color';
+import Navbar from "../component/Navbar.jsx";
 
 const Design = () => {
   const [imageData, setImageData] = useState(null);
@@ -13,7 +14,6 @@ const Design = () => {
   const [dressSize, setDressSize] = useState('');
   const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
   const [text, setText] = useState('');
-  const [fontStyle,setFontStyle] = useState('Arial');
   const [fontSize, setFontSize] = useState(25);
   const [textPosition, setTextPosition] = useState({ x: 50, y: 50});
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -23,6 +23,7 @@ const Design = () => {
   const isDraggingRef = useRef(false);
   const prevMousePositionRef = useRef({ x: 0, y: 0 });
   const draggingItemRef = useRef(null);
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -51,7 +52,6 @@ const Design = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
   }, [imageData, logoImage, logoPosition, logoWidth, logoHeight, color, text, fontSize, textPosition]);
-
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -87,7 +87,6 @@ const Design = () => {
     console.log("Text Color:", color);
     console.log("Text:", text);
     console.log("Font Size:", fontSize);
-    console.log("Font Style:",fontStyle)
     console.log("Save image:", canvasRef.current.toDataURL());
   };
 
@@ -111,14 +110,12 @@ const Design = () => {
   const handleFontSizeChange = (event) => {
     setFontSize(parseInt(event.target.value));
   };
-
   const handleLogoWidthChange = (event) => {
     setLogoWidth(parseInt(event.target.value));
   }; 
   const handleLogoHeightChange = (event) => {
     setLogoHeight(parseInt(event.target.value));
   };
-
 
   const handleColorChange = (newColor) => {
     setColor(newColor.rgb);
@@ -152,12 +149,11 @@ const Design = () => {
       }
     }
   
-
-  const handleFontStylesChange = (event) => {
-    setFontStyle(event.target.value);
-  }
-
-    
+    prevMousePositionRef.current = {
+      x: event.clientX,
+      y: event.clientY
+    };
+  };
   const handleMouseMove = (event) => {
     if (isDraggingRef.current) {
       const canvas = canvasRef.current;
@@ -181,19 +177,11 @@ const Design = () => {
       };
     }
   };
-
   const handleMouseUp = () => {
     isDraggingRef.current = false;
     draggingItemRef.current=null;
   };
 
-  const fontStyles = [
-    'Arial',
-    'Vardana',
-    'Times New Roman',
-    'Courier New',
-    'Georgia',
-  ]
   const sizeStyles = {
     Male_S: { width: '150px', height: '200px' },
     Male_M: { width: '200px', height: '250px' },
@@ -208,7 +196,9 @@ const Design = () => {
   };
 
   return (
-    <div className="w-screen h-screen bg-red-200 md-flex  justify-center items-center">
+    <div>
+      <Navbar />
+      <div className="w-screen h-screen bg-red-200 md-flex  justify-center items-center">
       <div className="text-center text-3xl text-red-500 pb-10">Customise Your Dress!!!</div>
       <div className="flex flex-col items-center">
         <canvas 
@@ -246,20 +236,10 @@ const Design = () => {
             )}
           </select>
         )}
-
         <input type="file" onChange={handleLogoChange} className="py-2 px-4 border rounded-lg bg-white mt-4" />
         <button onClick={() => {setLogoWidth(logoWidth+10);setLogoHeight(logoHeight + 10);}} style={{ backgroundColor: 'white', color: 'black' ,borderRadius:'10px', padding:'5px 8px', cursor:'pointer',marginTop: '10px'}}>Increase Size</button>
         
         <button onClick={() => {setLogoWidth(logoWidth -10);setLogoHeight(logoHeight- 10);}} style={{ backgroundColor: 'white', color: 'black' ,borderRadius:'10px', padding:'5px 8px', cursor:'pointer', marginTop:'10px',}}>Decrease Size</button>
-        <select value={fontStyles} onChange={handleFontStylesChange} className="mt-2 py-2 border rounded-lg bg-white">
-          {
-            
-            fontStyles.map(style => (
-              <option key={style} value={style}>{style}</option>
-            ))
-          }
-          
-        </select>
         <input 
           type="text" 
           value={text} 
@@ -279,6 +259,7 @@ const Design = () => {
           onChange={handleColorChange} 
           className="mt-2" 
         />
+
         <button onClick={handleSave} className="mt-4 bg-orange-300 text-white px-6 py-2 rounded-md hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-green-300">
           Save
         </button>
@@ -294,6 +275,8 @@ const Design = () => {
         )}
       </div>
     </div>
+    </div>
+    
   );
 };
 
