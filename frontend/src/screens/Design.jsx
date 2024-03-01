@@ -8,7 +8,7 @@ const Design = () => {
   const [dressSize, setDressSize] = useState('');
   const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
   const [text, setText] = useState('');
-  const [fontSize, setFontSize] = useState(10);
+  const [fontSize, setFontSize] = useState(25);
   const [textPosition, setTextPosition] = useState({ x: 50, y: 50});
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [savePrompt, setSavePrompt] = useState(false);
@@ -136,7 +136,7 @@ const Design = () => {
   };
 
   return (
-    <div className="w-screen h-screen bg-blue-200 md-flex px-2 py-2 justify-center items-center">
+    <div className="w-screen h-screen bg-red-200 md-flex  justify-center items-center">
       <div className="text-center text-3xl text-red-500 pb-10">Customise Your Dress!!!</div>
       <div className="flex flex-col items-center">
         <canvas 
@@ -154,7 +154,7 @@ const Design = () => {
         </select>
         {gender && (
           <select value={dressSize} onChange={handleDressSizeChange} className="mt-2 px-4 py-2 border rounded-lg bg-white">
-            <option value="">Select Dress Size</option>
+            <option value="">Select Size</option>
             {gender === 'Male' && (
               <>
                 <option value="Male_S">S</option>
@@ -193,18 +193,18 @@ const Design = () => {
           onChange={handleColorChange} 
           className="mt-2" 
         />
-        <button onClick={handleSave} className="mt-4 bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+        <button onClick={handleSave} className="mt-4 bg-orange-300 text-white px-6 py-2 rounded-md hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-green-300">
           Save
         </button>
         {savePrompt && (
           <div className="mt-4">
             <p>Are you sure you want to save?</p>
-            <button onClick={confirmSave} className="bg-green-500 text-white px-4 py-2 rounded-md mr-2">Yes</button>
-            <button onClick={handleCancelSave} className="bg-red-500 text-white px-4 py-2 rounded-md">No</button>
+            <button onClick={confirmSave} className="bg-green-400 text-white px-4 py-2 rounded-md mr-2">Yes</button>
+            <button onClick={handleCancelSave} className="bg-red-400 text-white px-4 py-2 rounded-md">No</button>
           </div>
         )}
         {saveSuccess && (
-          <div className="mt-4 text-green-500">Saved successfully!</div>
+          <div className="mt-4 text-green-400">Saved successfully!</div>
         )}
       </div>
     </div>
