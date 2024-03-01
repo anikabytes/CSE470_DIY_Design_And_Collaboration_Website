@@ -47,7 +47,7 @@ const Register = () => {
         <Container className='my-3'>
         <Row className='justify-content-center'>
             <Col xs={10} md={5} className='card p-5'>
-                <h1>REGISTER</h1>
+                <h1 className='font-bold text-lg'>REGISTER</h1>
             
                 <Form onSubmit={registerSubmit}>
                 

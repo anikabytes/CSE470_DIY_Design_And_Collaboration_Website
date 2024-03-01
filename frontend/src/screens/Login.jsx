@@ -42,7 +42,7 @@ const Login = () => {
       <Container className='my-5'>
         <Row className='justify-content-center'>
             <Col xs={10} md={5} className='card p-5'>
-                <h1>LOG IN</h1>
+                <h1 className='font-bold text-lg'>LOG IN</h1>
 
                 <Form onSubmit={loginSubmit}>
 

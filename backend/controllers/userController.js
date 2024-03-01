@@ -16,7 +16,8 @@ const userRegister = async (req, res) => {
         lname,
         email,
         password,
-        address
+        address,
+        dress
       });
 
     if (user) {
@@ -62,17 +63,43 @@ const userLogout = async (req, res) => {
 
 // Profile: /api/profile
 // GET
+
 const userProfile = async (req, res) => {
     const user = await User.findById(req.user.userId);
+
     res.status(200).json(
         {
             fname: user.fname,
             lname: user.lname,
             email: user.email,
-            address: user.address
+            address: user.address,
+            dress: user.dress
+            
         }
     );
 };
+
+// Save Dress: /api/savedress
+// POST
+const saveDress = async (req, res) => {
+    const user = await User.findById(req.user.userId);
+
+    if (user) {
+        user.dress.push(req.body.dress);
+        await user.save();
+
+        res.status(200).json({
+            id: user.id,
+            dress: user.dress
+        });
+
+        
+    }
+    else{
+        res.status(400).json({ message: "Cannot show dress" });
+    }
+};
+
 
 // Update profile: /api/profile
 // PUT
@@ -102,4 +129,4 @@ const userProfileUpdate = async (req, res) => {
 };
 
 
-export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate};
+export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress};

@@ -70,10 +70,21 @@ const Design = () => {
     reader.readAsDataURL(event.target.files[0]);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (selectedFile) {
       setSavePrompt(true);
-      console.log("Image uploaded")
+      console.log("Image uploaded");
+
+      const res = await fetch("http://localhost:3000/api/savedress", {
+        method: "POST",
+        credentials: "include",
+        headers: {"Content-type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+          'dress': canvasRef.current.toDataURL()
+        })
+      }
+      
+      );
     } else {
       console.log("No image uploaded.");
     }
@@ -281,4 +292,5 @@ const Design = () => {
 };
 
 export default Design;
+
 
