@@ -28,6 +28,7 @@
 # TANJILUR RAHMAN
 
 The products available are displayed here
-![Screenshot 2024-03-02 015716](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/6b3c517f-b822-4bf2-b6e2-6a4ff8021973)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/92399c12-c132-4d3e-8be5-7f288488bed3)
+
 
 
