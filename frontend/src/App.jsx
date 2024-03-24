@@ -29,6 +29,12 @@ function App() {
         <Route path='/clothes' element={<Clothes />}/>
         <Route path='/CartPage' element={<CartPage />}/>
         <Route path='/design' element={<Design />}/>
+        <Route path="/dress" element = {<Showitems />} />
+        <Route path="/dress/details/:id" element = {<Viewitem />} />
+        <Route path="/dress/addproduct" element = {<Additems />} />
+        <Route path="/dress/colaborate/:id" element = {<Colaborate />} />
+        <Route path="/dress/search/:searchString" element = {<Searchitems />} />
+        <Route path="/dress/delete/:id" element = {<Deleteitem />} />
 
 
       </Routes>
