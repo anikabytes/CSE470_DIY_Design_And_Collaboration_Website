@@ -5,6 +5,12 @@ import Clothes from './screens/Clothes';
 import CartPage from './screens/CartPage';
 import Home from './screens/Home';
 import Design from './screens/Design';
+import Additems from './screens/additems'
+import Deleteitem from './screens/deleteitem'
+import Searchitems from './screens/searchitems'
+import Showitems from './screens/showitems'
+import Viewitem from './screens/viewitem'
+import Colaborate from './screens/colab'
 
 import {
   BrowserRouter,
