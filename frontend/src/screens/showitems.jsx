@@ -12,7 +12,7 @@ const ShowItems = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:2489/dress')
+    axios.get('http://localhost:3000/dress')
       .then((response) => {
         setItems(response.data.data);
         setLoading(false);
