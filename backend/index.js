@@ -37,10 +37,7 @@ app.listen(port, () => {
     console.log(`Port ${port}`);
 })
 
-const clothes = express();
-clothes.use(express.json());
-clothes.use(cors());
-clothes.use('/dress',product);
+app.use('/dress',product);
 
 const connectDB = async () => {
     try {
