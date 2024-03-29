@@ -35,8 +35,13 @@ const Profile = () => {
       
       let dressItems = []
       for (let i = 0; i < data.dress.length; i++){
-        console.log(data.dress[i]);
-        dressItems.push(<img key = {i} src = {data.dress[i]}/>);
+        dressItems.push(
+          <li key = {i}>
+            <img key = {i} src = {data.dress[i]}/>
+            <button className="my-2 d-block bg-orange-300" color="white" style={{width:'100px'}} onClick={shareDress}>Share</button>
+          </li>
+          
+        );
       }
       setDress(dressItems);
     } 
@@ -53,9 +58,21 @@ const Profile = () => {
     const updateSubmit = async (e) => {
         navigate("/updateProfile");
     }
-    
-    
 
+    const shareDress = async (e)  => {
+      const res = await fetch("http://localhost:3000/api/sharedress", {
+        method: "POST",
+        credentials: "include",
+        headers: {"Content-type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+          share: e.target.parentNode.firstChild.src
+        })
+      }
+      );
+
+      console.log("You shared your design! Proud of you :)");
+    }
+    
     return (
       <div>
         <Navbar />

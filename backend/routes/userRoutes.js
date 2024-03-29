@@ -1,5 +1,5 @@
 import express from 'express';
-import {  userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress } from '../controllers/userController.js';
+import {  userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress } from '../controllers/userController.js';
 import verifyToken from '../middleware/verifyToken.js';
 
 const router = express.Router();
@@ -10,5 +10,6 @@ router.post('/logout', userLogout);
 router.get('/profile', verifyToken, userProfile);
 router.put('/profile', verifyToken, userProfileUpdate);
 router.post('/savedress', verifyToken, saveDress);
+router.post('/sharedress', verifyToken, shareDress);
 
 export default router;

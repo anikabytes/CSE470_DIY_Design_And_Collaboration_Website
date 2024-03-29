@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import Product from '../models/storeItems.js';
 import generateToken from '../middleware/generateToken.js';
 import mongoose from "mongoose";
 
@@ -91,15 +92,28 @@ const saveDress = async (req, res) => {
         res.status(200).json({
             id: user.id,
             dress: user.dress
-        });
-
-        
+        });  
     }
     else{
         res.status(400).json({ message: "Cannot show dress" });
     }
 };
 
+// Share Dress: /api/sharedress
+// POST
+const shareDress = async (req, res) => {
+    const user = await User.findById(req.user.userId);
+
+    const product = new Product({
+        name: 'Custom Designed Dress',
+        price: 0.00,
+        description: `One of ${user.fname}'s design`,
+        productImages: req.body.share,
+        designedby: user.fname
+    });
+
+    await product.save();
+}
 
 // Update profile: /api/profile
 // PUT
@@ -129,4 +143,4 @@ const userProfileUpdate = async (req, res) => {
 };
 
 
-export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress};
+export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress};

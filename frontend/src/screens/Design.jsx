@@ -1,26 +1,23 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SketchPicker } from 'react-color';
 import Navbar from "../component/Navbar.jsx";
 
 const Design = () => {
-  const colorPalatte = {r:255,g:255,b:255};
   const [imageData, setImageData] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [logoData, setLogoData] = useState(null);
   const [logoImage, setLogoImage] = useState(null);
   const [logoPosition, setLogoPosition] = useState({ x: 50, y: 50 });
-  const [logoWidth, setLogoWidth] = useState(500); // Initial width of the logo
-  const [logoHeight, setLogoHeight] = useState(500);
+  const [logoWidth, setLogoWidth] = useState(50); // Initial width of the logo
+  const [logoHeight, setLogoHeight] = useState(50);
   const [gender, setGender] = useState('');
   const [dressSize, setDressSize] = useState('');
-  const [textColor, setTextColor] = useState(colorPalatte);
+  const [color, setColor] = useState({ r: 255, g: 255, b: 255 });
   const [text, setText] = useState('');
   const [fontSize, setFontSize] = useState(25);
-  const [fontStyle,setFontStyle] = useState('');
   const [textPosition, setTextPosition] = useState({ x: 50, y: 50});
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [savePrompt, setSavePrompt] = useState(false);
-  const [dressColor,setDressColor] = useState(colorPalatte);
 
   const canvasRef = useRef(null);
   const isDraggingRef = useRef(false);
@@ -40,20 +37,6 @@ const Design = () => {
         canvas.height = image.height;
 
         ctx.drawImage(image, 0, 0);
-
-        if (dressColor.r !== 255 || dressColor.g !== 255 || dressColor.b !== 255) {
-          const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-          const data = imageData.data;
-        
-
-        for (let i=0; i< data.length; i+=4) {
-          data[i] = dressColor.r;
-          data[i+1] = dressColor.g;
-          data[i+2] = dressColor.b;
-        }
-
-        ctx.putImageData(imageData,0,0);
-      }
         if (logoImage) {
           const logoImg = new Image();
           logoImg.src = logoImage;
@@ -61,18 +44,14 @@ const Design = () => {
             ctx.drawImage(logoImg, logoPosition.x, logoPosition.y, logoWidth, logoHeight);
           };
         }
-        ctx.font = `${fontSize}px ${fontStyle}`;
-
-        const forTextColor = `rgb(${textColor.r}, ${textColor.g}, ${textColor.b})`;
-        ctx.fillStyle = forTextColor;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
         ctx.fillText(text, textPosition.x, textPosition.y);
-
-
       };
     } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-  }, [imageData, logoImage, logoPosition, logoWidth, logoHeight, textColor, text, fontSize, textPosition, dressColor, fontStyle]);
+  }, [imageData, logoImage, logoPosition, logoWidth, logoHeight, color, text, fontSize, textPosition]);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -94,8 +73,6 @@ const Design = () => {
   const handleSave = async () => {
     if (selectedFile) {
       setSavePrompt(true);
-      console.log("Image uploaded");
-
       const res = await fetch("http://localhost:3000/api/savedress", {
         method: "POST",
         credentials: "include",
@@ -116,11 +93,9 @@ const Design = () => {
     setSaveSuccess(true);
     console.log("Gender:", gender);
     console.log("Size:", dressSize);
-    console.log("Text Color:", textColor);
+    console.log("Text Color:", color);
     console.log("Text:", text);
-    console.log("Dress Color:",dressColor);
     console.log("Font Size:", fontSize);
-    console.log("Font Style:",fontStyle);
     console.log("Save image:", canvasRef.current.toDataURL());
   };
 
@@ -133,17 +108,9 @@ const Design = () => {
     setDressSize(''); 
   };
 
-
-
   const handleDressSizeChange = (event) => {
     setDressSize(event.target.value);
   };
-
-  const handleDressColorChange = (newDressColor) => {
-    setDressColor(newDressColor.rgb);
-  }
-
-
 
   const handleTextChange = (event) => {
     setText(event.target.value);
@@ -152,11 +119,6 @@ const Design = () => {
   const handleFontSizeChange = (event) => {
     setFontSize(parseInt(event.target.value));
   };
-
-  const handleFontStyleChange = (event) => {
-    setFontStyle(event.target.value); 
-  };
-
   const handleLogoWidthChange = (event) => {
     setLogoWidth(parseInt(event.target.value));
   }; 
@@ -164,8 +126,8 @@ const Design = () => {
     setLogoHeight(parseInt(event.target.value));
   };
 
-  const handleTextColorChange = (newTextColor) => {
-    setTextColor(newTextColor.rgb);
+  const handleColorChange = (newColor) => {
+    setColor(newColor.rgb);
   };
 
   const handleMouseDown = (event) => {
@@ -242,7 +204,6 @@ const Design = () => {
     Female_XL: {width:'350px', height:'400px'},
   };
 
-
   return (
     <div>
       <Navbar />
@@ -295,10 +256,6 @@ const Design = () => {
           placeholder="Enter text" 
           className="py-2 px-4 border rounded-lg bg-white mt-4" 
         />
-        <select value={fontStyle} onChange={handleFontStyleChange} className="mt-2 px-4 py-2 border rounded-lg bg-white">
-          <option value="Arial">Arial</option>
-          <option value="Times New Roman">Times New Roman</option>
-        </select>
         <input 
           type="number" 
           value={fontSize} 
@@ -307,14 +264,8 @@ const Design = () => {
           className="py-2 px-4 border rounded-lg bg-white mt-2" 
         />
         <SketchPicker 
-          color={textColor} 
-          onChange={handleTextColorChange} 
-          className="mt-2" 
-        />
-
-        <SketchPicker 
-          color={dressColor} 
-          onChange={handleDressColorChange} 
+          color={color} 
+          onChange={handleColorChange} 
           className="mt-2" 
         />
 
@@ -339,3 +290,5 @@ const Design = () => {
 };
 
 export default Design;
+
+

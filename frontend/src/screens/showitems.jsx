@@ -45,7 +45,7 @@ const ShowItems = () => {
           {items.map((item) => (
             <div key={item._id} className='border border-slate-600 rounded-md mb-4' style={{flexBasis: '33%'}}>
               <div className='p-2'>
-              <p className='text-center'><strong>Image:</strong> {item.productImages}</p>
+              <p className='text-center'><strong>Image:</strong> <img src={item.productImages} /></p>
                 <p className='text-center mb-1'><strong>Name:</strong> {item.name}</p>
                 <p className='text-center mb-1'><strong>Description:</strong> {item.description}</p>
                 <p className='text-center mb-1'><strong>Price:</strong> {item.price}</p>
