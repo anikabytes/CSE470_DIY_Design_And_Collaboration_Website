@@ -1,12 +1,13 @@
 # CSE470_DIY_Design_And_Collaboration_Website
 
 # ANIKA ISLAM
-## This is the design portal
-![423472441_707525368219819_4148238291224511408_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/0b2ecbc9-8375-4969-be6a-b004f68015ae)
+## This is where users can fonts of the added text
+![59f575e7-a89c-49f2-8159-0eff0f1fb933](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/d14240b9-e92c-4dfc-aaf8-582eec7fb2a7)
 
-## The user can change gender and size of the imported dress image. They can also add custom text on top of them and change its color and size.
-![423541959_1532746797503703_1484120866041091355_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/c033be7a-5557-47ec-95f0-7ac221f1f797)
-![423455206_952710032883194_4135447507468537827_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/5c23166d-8845-4395-8b54-63f5ac6f7aa3)
+
+## Drag and drop feature of designs
+![6f55138c-8cee-4f70-a5b8-febe96dcb546](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/792535b1-ee92-491e-b0e8-3be3d6af11cd)
+
 
 
 # TASFIYA BUSHRA
@@ -18,8 +19,9 @@
 
 
 # RISAT RAHAMAN
-## The user can save their designed dress image
-![Screenshot 2024-03-02 001949](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/bd6c759f-96e7-4f9f-b2fa-cff77dfcef5a)
+## The user can share their designs in the clothes section
+![433703273_3526130334303773_8630922897572044727_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/d139fa1a-c161-46df-b3b7-e36052535c5c)
+
 
 ## They can view their saved designs in their profile page
 ![Screenshot 2024-03-01 235325](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/e829be8a-2870-477d-a8e3-c56d1f7e5ed6)
@@ -28,7 +30,13 @@
 # TANJILUR RAHMAN
 
 The products available are displayed here
-![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/92399c12-c132-4d3e-8be5-7f288488bed3)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/dc683ace-77cc-4283-82b2-f901220faa94)
+Searched products are displayed here
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/f4ce3047-ee76-4cd9-bf12-c0ecdc766a9f)
+Individual Products
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/38a0912a-d9b7-45fa-a5f4-562a2e73c09c)
+
+
 
 
 
