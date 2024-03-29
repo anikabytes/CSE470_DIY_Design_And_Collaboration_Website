@@ -11,11 +11,12 @@
 
 
 # TASFIYA BUSHRA
-## There is a cart page
-![423454476_281038054865194_5074101821300668680_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/479bbffc-696d-49dc-9dd8-54eeda98987b)
+## There is a cart and checkout page
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/9a448d3e-98a4-4fc8-b50a-1c7237e605b9)
 
-## The user can import dress images. They can also import and add logos on top of them.
-![423472306_395641486432340_2582318978862489114_n](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/91422611/a0e04b45-59d1-4354-a1d2-1fc0ba35c536)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/0da592ed-11b0-4952-bc86-4bbe555803a1)
+
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/a98da135-08ea-401e-8f4c-2c8155b229b9)
 
 
 # RISAT RAHAMAN
