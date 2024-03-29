@@ -1,13 +1,15 @@
 # CSE470_DIY_Design_And_Collaboration_Website
 
 # ANIKA ISLAM
-## This is where users can fonts of the added text
+## This is where users can change fonts of the added text using dropdown 
 ![59f575e7-a89c-49f2-8159-0eff0f1fb933](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/d14240b9-e92c-4dfc-aaf8-582eec7fb2a7)
 
 
 ## Drag and drop feature of designs
 ![6f55138c-8cee-4f70-a5b8-febe96dcb546](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/99034559/792535b1-ee92-491e-b0e8-3be3d6af11cd)
 
+## User can change color of the image using color palatte
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/131149859/df597bd3-7049-4687-a6be-53c72618df82)
 
 
 # TASFIYA BUSHRA
