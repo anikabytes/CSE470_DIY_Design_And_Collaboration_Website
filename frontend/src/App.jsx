@@ -10,7 +10,7 @@ import Deleteitem from './screens/deleteitem'
 import Searchitems from './screens/searchitems'
 import Showitems from './screens/showitems'
 import Viewitem from './screens/viewitem'
-
+import Checkout from './screens/checkout';
 import {
   BrowserRouter,
   Routes,
@@ -39,6 +39,7 @@ function App() {
         <Route path="/dress/addproduct" element = {<Additems />} />
         <Route path="/dress/search/:searchString" element = {<Searchitems />} />
         <Route path="/dress/delete/:id" element = {<Deleteitem />} />
+        <Route path='/checkout' element={< Checkout />}/>
 
 
       </Routes>
