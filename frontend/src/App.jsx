@@ -11,6 +11,7 @@ import Searchitems from './screens/searchitems'
 import Showitems from './screens/showitems'
 import Viewitem from './screens/viewitem'
 import Checkout from './screens/checkout';
+import Search from './screens/search';
 import {
   BrowserRouter,
   Routes,
@@ -31,16 +32,16 @@ function App() {
         <Route path='/profile' element={<Profile />}/>
         <Route path='/updateProfile' element={<UpdateProfile />}/>
         <Route path='/' element={<Home />}/>
-        <Route path='/clothes' element={<Clothes />}/>
+        {/* <Route path='/clothes' element={<Clothes />}/> */}
         <Route path='/CartPage' element={<CartPage />}/>
         <Route path='/design' element={<Design />}/>
-        <Route path="/dress" element = {<Showitems />} />
-        <Route path="/dress/details/:id" element = {<Viewitem />} />
-        <Route path="/dress/addproduct" element = {<Additems />} />
-        <Route path="/dress/search/:searchString" element = {<Searchitems />} />
-        <Route path="/dress/delete/:id" element = {<Deleteitem />} />
+        <Route path="/clothes" element = {<Showitems />} />
+        <Route path="/clothes/details/:id" element = {<Viewitem />} />
+        <Route path="/clothes/addproduct" element = {<Additems />} />
+        <Route path="/clothes/search/:searchString" element = {<Searchitems />} />
+        <Route path="/clothes/delete/:id" element = {<Deleteitem />} />
         <Route path='/checkout' element={< Checkout />}/>
-
+        <Route path='/search' element={< Search />}/>
 
       </Routes>
     </BrowserRouter>
@@ -48,5 +49,6 @@ function App() {
   )
 }
 
+export default App
 export default App
 
