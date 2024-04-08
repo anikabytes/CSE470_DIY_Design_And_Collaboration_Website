@@ -52,7 +52,7 @@ const connectDB = async () => {
     }
 }
 
-app.use('/dress',product);
+app.use('/clothes',product);
 const sampleUser = {
     name: 'John Doe',
     email: 'john.doe@example.com',
