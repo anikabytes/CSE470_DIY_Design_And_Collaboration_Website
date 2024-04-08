@@ -55,9 +55,11 @@ const ShowItems = () => {
       />)}
       </div>
       <div className='flex justify-between items-center justify-center mt-4 py-4'>
+        <Link to = "/design">
             <button className='bg-orange-300 px-4 py-2 rounded-md hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-green-300'>
               Customise Your Dress 
             </button>
+        </Link>
         </div>
     </div>
   );
