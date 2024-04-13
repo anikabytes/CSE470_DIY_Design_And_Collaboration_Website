@@ -23,18 +23,6 @@ const sampleProducts = [
   }
 ];
 
-// const CartPage = () => {
-//   let total = 0;
-
-//   const cartData = JSON.parse(localStorage.getItem("cart")) || [];
-
-//   const [cart, setCart] = useState(cartData);
-//   const [selectedProduct, setSelectedProduct] = useState(cartData);
-
-
-//   useEffect(() => {
-//     localStorage.setItem("cart", JSON.stringify(cart));
-//   }, [cart]);
 const CartPage = () => {
   let total = 0;
 
@@ -66,7 +54,7 @@ const CartPage = () => {
       return <strong> Cart is empty! </strong>;
     }
 
-    // Calculate the total price
+
     total = 0;
     total = calculateTotal(selectedProduct);
 
@@ -99,12 +87,11 @@ const CartPage = () => {
   };
   const handleShopping = () => {
     
-    //console.log('Checkout process started');
-    window.location.assign('/dress')
+    window.location.assign('/clothes')
   };  
   const handleCheckout = () => {
     
-    //console.log('Checkout process started');
+    console.log('Checkout process started');
     window.location.assign('/checkout')
   };
 
@@ -156,3 +143,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
