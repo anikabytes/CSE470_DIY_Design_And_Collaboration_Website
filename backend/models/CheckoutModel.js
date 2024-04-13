@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-
-const OrderSchema = mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
   user: {
     name: {
       type: String,
@@ -38,6 +37,16 @@ const OrderSchema = mongoose.Schema({
   paymentMethod: {
     type: String,
     required: true,
+  },
+  payment: {
+    cardNumber: {
+      type: String,
+      required: true,
+    },
+    expiryDate: {
+      type: String,
+      required: true,
+    },
   },
   createdAt: {
     type: Date,
