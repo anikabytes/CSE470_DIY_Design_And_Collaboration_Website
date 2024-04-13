@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './../component/Navbar';
+import Navbar from '../component/Navbar';
 import CartPage from './CartPage';
 import axios from 'axios';
-// import { loadStripe } from '@stripe/stripe-js';
-// import { CardElement } from '@stripe/react-stripe-js';
-
-// const stripe = loadStripe('YOUR_STRIPE_PUBLISHABLE_KEY');
-const checkout = () => {
-  // Set up state for the checkout form fields
+let order
+const Checkout = () => {
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
@@ -17,66 +14,81 @@ const checkout = () => {
   const [cvv, setCvv] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [items, setItems] = useState([]);
-  //const stripe = loadStripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+  const [itemNames, setItemNames] = useState([]); // State to store item names
+
   useEffect(() => {
     const storedItems = localStorage.getItem('cart');
     if (storedItems) {
-      setItems(JSON.parse(storedItems));
+      const parsedItems = JSON.parse(storedItems);
+      const names = parsedItems.map(item => item.name);
+      const price = parsedItems.map(item => item.price);
+      setItemNames([names,price]); 
+      setItems(parsedItems);
     }
   }, []);
-
-  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Create an order object
-    const order = {
+    const user = {
       name: name,
       email: email,
-      number: number,
-      address: address,
-      items: items,
-      total: calculateTotal(items),
-      paymentMethod: paymentMethod,
+      number: number, 
+      address: address, 
+      cardNumber: cardNumber,
+      expiryDate: expiryDate,
+      cvv: cvv
+    };
+ 
+    if (paymentMethod === 'cash') {
+
+   
+      if (!user.name || !user.email || !user.number || !user.address) {
+        let errorMessage = "Error: Required fields for online payment are empty: ";
+        if (!user.name) errorMessage += "name, ";
+        if (!user.email) errorMessage += "email, ";
+        if (!user.number) errorMessage += "number, ";
+        if (!user.address) errorMessage += "address, ";
+
+        errorMessage = errorMessage.slice(0, -2); 
+        console.log(errorMessage);
+        return; 
     }
+    } else if (paymentMethod === 'online') {
 
-    // Send the order object to your backend server
-    const { data: paymentIntent } = await axios.post('/api/orders', order);
 
-    // Mount the Stripe Elements
-    const stripeElement = stripe.elements();
-    const cardElement = stripeElement.create('card');
-    cardElement.mount('#card-element');
-
-    // Handle the payment
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-    });
-
-    if (error) {
-      console.error(error);
-      return;
-    }
-
-    // Confirm the payment intent
-    const { error: confirmError } = await stripe.confirmCardPayment(paymentIntent.client_secret, {
-      payment_method: paymentMethod.id,
-    });
-
-    if (confirmError) {
-      console.error(confirmError);
-      return;
-    }
-
-    // Payment was successful
-    console.log('Payment was successful');
-    // Clear the cart
-    setItems([]);
-    // Redirect to the order confirmation page
-    // history.push('/orders/confirmation');
+      if (!user.name || !user.email || !user.number || !user.address || !user.cardNumber || !user.expiryDate || !user.cvv) {
+          let errorMessage = "Error: Required fields for online payment are empty: ";
+          if (!user.name) errorMessage += "name, ";
+          if (!user.email) errorMessage += "email, ";
+          if (!user.number) errorMessage += "number, ";
+          if (!user.address) errorMessage += "address, ";
+          if (!user.cardno) errorMessage += "card number, ";
+          if (!user.expiryDate) errorMessage += "expiry date, ";
+          if (!user.cvv) errorMessage += "CVV, ";
+          errorMessage = errorMessage.slice(0, -2); // Remove trailing comma and space
+          console.log(errorMessage);
+          return; // Exit or handle the error accordingly
+      }
   }
   
+    const payment = paymentMethod === 'online' ? 'online' : 'cash';
+    const itemDetails = items.map(item => [item.name, item.price]); 
+  
+    const order = [user.name, user.email, payment, itemDetails];
+    
+    console.log('Order:', order); 
+    sendOrderToBackend(order);
+};
+
+  const sendOrderToBackend = async (order) => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/saveOrder', { order });
+      console.log('Order sent to backend successfully:', response.data);
+   
+    } catch (error) {
+      console.error('Failed to send order to backend:', error);
+    
+    }
+  };
   const handleNumberChange = (event) => {
     setNumber(event.target.value);
   };
@@ -107,15 +119,15 @@ const checkout = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ backgroundColor: "grey", padding: "10px", marginBottom: "20px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "white" }}>Checkout</h1>
+      <div style={{ backgroundColor: 'grey', padding: '10px', marginBottom: '20px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white' }}>Checkout</h1>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <div>
           <h2>Items</h2>
           <ul>
             {items.map((item, index) => (
-              <li key={item._id}>
+              <li key={index}>
                 <img src={item.productImages} alt={item.name} style={{ width: 100, height: 100 }} />
                 <div>
                   name:{item.name}
@@ -128,14 +140,16 @@ const checkout = () => {
             ))}
           </ul>
           <div>
-            <h2><strong>Total:</strong> {calculateTotal(items)}</h2>
+            <h2>
+              <strong>Total:</strong> {calculateTotal(items)}
+            </h2>
           </div>
         </div>
         <div>
           <h2>Details</h2>
           <form onSubmit={handleSubmit}>
             <label>
-              <strong>PAyment Method</strong>
+              <strong>Payment Method</strong>
               <select value={paymentMethod} onChange={(event) => setPaymentMethod(event.target.value)}>
                 <option value="cash">Cash on delivery</option>
                 <option value="online">Online payment</option>
@@ -144,46 +158,47 @@ const checkout = () => {
             <br />
             <label>
               Name:
-              <input type="text" value={name} onChange={(handleNameChange)} />
+              <input type="text" value={name} onChange={handleNameChange} />
             </label>
             <br />
             <label>
               Number:
-              <input type="text" value={number} onChange={(handleNumberChange)} />
+              <input type="text" value={number} onChange={handleNumberChange} />
             </label>
             <br />
             <label>
               Email:
-              <input type="email" value={email} onChange={(handleEmailChange)} />
+              <input type="email" value={email} onChange={handleEmailChange} />
             </label>
             <br />
             <label>
               Address:
-              <textarea value={address} onChange={(handleAddressChange)} />
+              <textarea value={address} onChange={handleAddressChange} />
             </label>
             <br />
             {paymentMethod === 'online' && (
-              <label>
-                Card number:
-                <input type="text" value={cardNumber} onChange={(handleCardNumberChange)} />
-              </label>
+              <>
+                <label>
+                  Card number:
+                  <input type="text" value={cardNumber} onChange={handleCardNumberChange} />
+                </label>
+                <br />
+                <label>
+                  Expiry date:
+                  <input type="text" value={expiryDate} onChange={handleExpiryDateChange} />
+                </label>
+                <br />
+                <label>
+                  CVV:
+                  <input type="text" value={cvv} onChange={handleCvvChange} />
+                </label>
+                <br />
+              </>
             )}
             <br />
-            {paymentMethod === 'online' && (
-              <label>
-                Expiry date:
-                <input type="text" value={expiryDate} onChange={(handleExpiryDateChange) } />
-              </label>
-            )}
-            <br />
-            {paymentMethod === 'online' && (
-              <label>
-                CVV:
-                <input type="text" value={cvv} onChange={(handleCvvChange) } />
-              </label>
-            )}
-            <br />
-            <button type="submit">Submit</button>
+            <button style={{ backgroundColor: 'green', color: 'white', marginTop: '10px' }} type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -199,4 +214,5 @@ const calculateTotal = (items) => {
   return total;
 };
 
-export default checkout;
+export default Checkout;
+export {order};
