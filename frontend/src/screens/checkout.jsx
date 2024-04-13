@@ -38,7 +38,7 @@ const Checkout = () => {
       cvv: cvv
     };
  
-    if (paymentMethod === 'cash') {
+    if (paymentMethod != 'online') {
 
    
       if (!user.name || !user.email || !user.number || !user.address) {
