@@ -246,9 +246,9 @@ const Design = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-screen h-screen bg-red-200 md-flex  justify-center items-center">
-      <div className="text-center text-3xl text-red-500 pb-10">Customise Your Dress!!!</div>
-      <div className="flex flex-col items-center">
+      <div className=" bg-rose-200 md-flex  justify-center items-center">
+      <div className="text-center text-3xl text-red-500 p-20">Customise Your Dress!!!</div>
+      <div className="flex flex-col items-center md-flex ">
         <canvas 
           ref={canvasRef} 
           style={{ ...sizeStyles[dressSize], maxWidth: '100%', height: 'auto', marginBottom: '1rem' }}
@@ -306,17 +306,17 @@ const Design = () => {
           placeholder="Enter font size" 
           className="py-2 px-4 border rounded-lg bg-white mt-2" 
         />
-        <SketchPicker 
-          color={textColor} 
-          onChange={handleTextColorChange} 
-          className="mt-2" 
-        />
+        <div className="grid grid-cols-2 gap-4 p-5">
+          <SketchPicker 
+            color={textColor} 
+            onChange={handleTextColorChange}  
+          />
 
-        <SketchPicker 
-          color={dressColor} 
-          onChange={handleDressColorChange} 
-          className="mt-2" 
-        />
+          <SketchPicker 
+            color={dressColor} 
+            onChange={handleDressColorChange} 
+          />
+        </div>
 
         <button onClick={handleSave} className="mt-4 bg-orange-300 text-white px-6 py-2 rounded-md hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-green-300">
           Save

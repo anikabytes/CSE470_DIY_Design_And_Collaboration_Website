@@ -31,6 +31,12 @@ const Navbar = () => {
                         </li>
                     </Link>
 
+                    <Link to='/viewusers'>
+                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-yellow-200 hover:rounded">
+                            All Users
+                        </li>
+                    </Link>
+
                     <Link to='/profile'>
                         <li className="my-4 py-4 border-b border-slate-800 hover:bg-yellow-200 hover:rounded">
                             Profile
@@ -70,6 +76,14 @@ const Navbar = () => {
                                         Purchase
                                     </li>
                                 </Link>
+
+
+                                <Link to='/viewusers'>
+                                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                        All Users
+                                    </li>
+                                </Link>
+
 
                                 <Link to='/profile'>
                                     <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">

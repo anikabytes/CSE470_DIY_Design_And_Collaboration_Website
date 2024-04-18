@@ -11,6 +11,7 @@ const Profile = () => {
     const [address, setAddress] = useState('');
     const [dress, setDress] = useState([]);
     
+    
     const navigate = useNavigate();
 
     useEffect(() => getProfile, []);
@@ -22,6 +23,7 @@ const Profile = () => {
           credentials: "include"
         }
         );
+
       const data = await res.json();
 
       if (res.status != 200){
@@ -44,6 +46,7 @@ const Profile = () => {
         );
       }
       setDress(dressItems);
+
     } 
 
     const logoutSubmit = async (e) => {
@@ -72,6 +75,9 @@ const Profile = () => {
 
       console.log("You shared your design! Proud of you :)");
     }
+
+
+
     
     return (
       <div>
@@ -87,6 +93,7 @@ const Profile = () => {
               <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={updateSubmit}>UPDATE PROFILE</Button>
               <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={logoutSubmit}>LOGOUT</Button>
               <h5 className='font-bold text-lg'>Saved Designs:</h5>
+              <h5 className='font-bold font-sans text-lg flex flex-row text-blue-500 underline'>Following:</h5>
               <ul className='flex flex-row'>{dress}</ul>
           </Col>
           

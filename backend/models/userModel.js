@@ -32,7 +32,11 @@ const userSchema = mongoose.Schema(
     dress: {
         type: [String],
         default: []
-    }
+    },
+    followers: {
+      type: [String],
+      default: []
+    },
   },
   {
     timestamps: true,

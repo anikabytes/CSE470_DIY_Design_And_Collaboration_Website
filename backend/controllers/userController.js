@@ -17,7 +17,9 @@ const userRegister = async (req, res) => {
         lname,
         email,
         password,
-        address   
+        address,
+        // dress,
+        // followers,
       });
 
     if (user) {
@@ -73,12 +75,78 @@ const userProfile = async (req, res) => {
             lname: user.lname,
             email: user.email,
             address: user.address,
-            dress: user.dress
+            dress: user.dress,
+            followers: user.followers,
             
         }
     );
 };
 
+// Add followers : /api/addFollowers 
+// POST 
+const addFollowers = async (req,res) => {
+    try {
+        const user = await User.findById(req.user.userId);
+
+        if (!user) {
+            return res.status(404).json({message:"User not found"});
+        }
+        const {email} = rrq.body;
+
+        if (!email){
+            return res.status(404).json({message:"Follower not found"});
+        }
+
+        const followers = await User.findOne({email});
+
+        if (!followers){
+            return res.status(404).json({message:"Follower not found"});
+        }
+
+        if (followers._email.equals(req.user.email)) {
+            return res.status(400).json({message:"You can't follow yourself"});
+        }
+
+        if (user.followers.includes(followers._email)){
+            return res.status(400).json({message:"You both are already friends"});
+        }
+
+        user.followers.push(followers._email);
+        await user.save();
+
+        res.status(200).json({
+            message:"Follower added Successfully",
+            followers_email:followers._email,
+        });
+
+
+    }
+    catch (error) {
+        console.error("Error adding followers:",error);
+        res.status(500).json({message:"Internal server error"});
+    }
+};
+
+
+//View Users: /api/getUsers 
+// FETCH 
+const getUsers = async (req, res) => {
+    try {
+      const user = await User.findByEmail(req.user.userEmail) 
+  
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const username = user.users.map(user => user.username);
+      const useremail = user.users.map(user => user.email);
+      
+      res.status(200).json({ users });
+    } catch (error) {
+      console.error("Error fetching followers:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
 // Save Dress: /api/savedress
 // POST
 const saveDress = async (req, res) => {
@@ -142,4 +210,4 @@ const userProfileUpdate = async (req, res) => {
 };
 
 
-export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress};
+export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, addFollowers, saveDress, shareDress, getUsers};

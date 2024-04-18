@@ -12,8 +12,6 @@ import Showitems from './screens/showitems'
 import Viewitem from './screens/viewitem'
 import Checkout from './screens/checkout';
 import Search from './screens/search';
-import Admin_user from './screens/admin_user';
-import Admin_clothes from './screens/admin_clothes';
 import {
   BrowserRouter,
   Routes,
@@ -44,9 +42,6 @@ function App() {
         <Route path="/clothes/delete/:id" element = {<Deleteitem />} />
         <Route path='/checkout' element={< Checkout />}/>
         <Route path='/search' element={< Search />}/>
-        <Route path='/admin_user' element={< Admin_user />}/>
-        <Route path='/admin_clothes' element={< Admin_clothes />}/>
-        
 
       </Routes>
     </BrowserRouter>
@@ -55,5 +50,5 @@ function App() {
 }
 
 export default App
-export default App
+// export default App
 
