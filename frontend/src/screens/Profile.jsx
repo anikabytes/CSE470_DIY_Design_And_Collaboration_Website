@@ -93,7 +93,7 @@ const Profile = () => {
               <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={updateSubmit}>UPDATE PROFILE</Button>
               <Button className="my-2 d-block bg-orange-300" style={{width:'100px'}} onClick={logoutSubmit}>LOGOUT</Button>
               <h5 className='font-bold text-lg'>Saved Designs:</h5>
-              <h5 className='font-bold font-sans text-lg flex flex-row text-blue-500 underline'>Following:</h5>
+              <h5 className='font-bold font-sans text-lg flex flex-row text-blue-500 '>Following:</h5>
               <ul className='flex flex-row'>{dress}</ul>
           </Col>
           
