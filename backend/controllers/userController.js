@@ -41,11 +41,19 @@ const userLogin = async (req, res) => {
 
     const user = await User.findOne({email})
     if (user && (await user.matchPassword(password))) {
-        generateToken(res, user._id)
-        res.status(200).json({
-            id: user.id,
-            fname: user.fname
-        });
+        if (user.userType === 'User') {
+            generateToken(res, user._id);
+            res.status(200).json({
+                id: user.id,
+                fname: user.fname
+            });
+        } else if (user.userType === 'Admin') {
+            generateToken(res, user._id);
+            res.status(201).json({
+                id: user.id,
+                fname: user.fname
+            });
+        }
     }
     else{
         res.status(400).json({ message: "Wrong email or password" });
