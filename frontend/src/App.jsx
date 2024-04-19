@@ -12,6 +12,8 @@ import Showitems from './screens/showitems'
 import Viewitem from './screens/viewitem'
 import Checkout from './screens/checkout';
 import Admin from './screens/admin_user';
+import ShowDesign from './screens/admin_clothes';
+import RemoveDesign from './screens/removedesigns';
 import TrackOrder from './screens/trackorder';
 import RemoveOrder from './screens/removeorder';
 
@@ -47,7 +49,8 @@ function App() {
         <Route path='/admin_user' element={< Admin />}/>
         <Route path='/trackorder' element={< TrackOrder />}/>
         <Route path='/removeorder' element={< RemoveOrder />}/>
-        
+        <Route path='/admin_clothes' element={< ShowDesign />}/>
+        <Route path='/removedesigns' element={< RemoveDesign />}/>
         
 
       </Routes>
