@@ -26,10 +26,17 @@ const Login = () => {
 
       const data = await res.json();
 
-      if (res.status == 200){
+      if (res.status === 200) {
         console.log("Successfully Logged In");
         localStorage.setItem("email", email);
         navigate("/profile");
+    } else if (res.status === 201) {
+        console.log("Successfully Logged In as Admin");
+        localStorage.setItem("email", email);
+        navigate("/admin_user");
+    } else {
+        alert(data.message);
+    }
 
       }else{
         alert(data.message);
