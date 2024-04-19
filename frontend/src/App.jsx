@@ -11,7 +11,10 @@ import Searchitems from './screens/searchitems'
 import Showitems from './screens/showitems'
 import Viewitem from './screens/viewitem'
 import Checkout from './screens/checkout';
-import Search from './screens/search';
+import Admin from './screens/admin_user';
+import TrackOrder from './screens/trackorder';
+import RemoveOrder from './screens/removeorder';
+
 import {
   BrowserRouter,
   Routes,
@@ -41,7 +44,11 @@ function App() {
         <Route path="/clothes/search/:searchString" element = {<Searchitems />} />
         <Route path="/clothes/delete/:id" element = {<Deleteitem />} />
         <Route path='/checkout' element={< Checkout />}/>
-        <Route path='/search' element={< Search />}/>
+        <Route path='/admin_user' element={< Admin />}/>
+        <Route path='/trackorder' element={< TrackOrder />}/>
+        <Route path='/removeorder' element={< RemoveOrder />}/>
+        
+        
 
       </Routes>
     </BrowserRouter>
