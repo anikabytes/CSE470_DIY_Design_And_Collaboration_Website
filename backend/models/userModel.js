@@ -33,6 +33,11 @@ const userSchema = mongoose.Schema(
         type: [String],
         default: []
     },
+    userType: {
+      type: String,
+      required: true,
+      default: 'User'
+    },
     followers: {
       type: [String],
       default: []
@@ -59,5 +64,17 @@ userSchema.pre('save', async function (next) {
 });
 
 const User = mongoose.model('User', userSchema);
-
+async function createAdminUser() {
+  const existingAdmin = await User.findOne({ email: "something@gmail.com", userType: "Admin" });
+  if (!existingAdmin) {
+    await User.create({
+      fname: "ARTisTs",
+      lname: "admins",
+      email: "something@gmail.com",
+      password: "1111",
+      userType: "Admin"
+    });
+  }
+}
+createAdminUser();
 export default User;
