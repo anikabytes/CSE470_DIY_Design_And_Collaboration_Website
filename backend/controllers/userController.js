@@ -1,6 +1,7 @@
 import User from '../models/userModel.js';
 import Product from '../models/productModel.js';
 import Message from '../models/messageModel.js';
+import Checkout from '../models/checkoutModel.js';
 import generateToken from '../middleware/generateToken.js';
 import mongoose from "mongoose";
 
@@ -199,15 +200,17 @@ const getOrder = async (req, res) => {
 const postOrder = async (req, res) =>{
     const user = await User.findById(req.user.userId);
 
+    const id = req.body.id;
     const name = req.body.name;
     const image = req.body.img;
     const price = req.body.price;
 
     if (user) {
-        user.order.push({name, image, price});
+        user.order.push({id, name, image, price});
         await user.save();
 
         res.status(200).json({
+            id: id,
             name: name,
             img: image,
             price: price
@@ -217,6 +220,33 @@ const postOrder = async (req, res) =>{
         res.status(400).json({ message: "Cannot follow" });
     }
 }
+
+// Remove Order: /api/removeorder
+// POST
+const removeOrder = async (req, res) =>{
+    try {
+        const user = await User.findById(req.user.userId);
+
+        
+        if (user){
+            
+            await User.findOneAndUpdate(
+                {_id: user._id},
+                {$pull: {order : {id: req.body.order}}},
+                { new: true },
+            )
+
+            return res.status(200).json({
+                order: req.body.order
+            })
+        }
+        
+        
+
+      } catch (e) {
+        res.status(400).send({ message: e.message });
+      }
+    }
 
 
 // Send Message: /api/message
@@ -255,4 +285,9 @@ const getMessage = async (req, res) =>{
       }
     }
 
-export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, sendMessage, getMessage};
+// Post Checkout: /api/checkout
+// POST
+
+
+
+export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, removeOrder, sendMessage, getMessage};
