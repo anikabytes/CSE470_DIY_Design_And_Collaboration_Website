@@ -30,6 +30,7 @@ app.use('/api', userRoutes);
 
 app.use('/', product);
 
+
 app.get('/', (req, res) => res.send('Server is running'));
 
 app.listen(port, () => {

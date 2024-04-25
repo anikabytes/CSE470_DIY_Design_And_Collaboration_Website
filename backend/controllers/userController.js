@@ -285,9 +285,28 @@ const getMessage = async (req, res) =>{
       }
     }
 
-// Post Checkout: /api/checkout
+
+// Checkout: /api/checkout
 // POST
+const checkout = async (req, res) => {
+    const user = await User.findById(req.user.userId);
+
+  try{
+      const checkout = new Checkout({
+          username: user.fname + ' ' + user.lname,
+          email: user.email,
+          address: user.address,
+          order: {dressId: req.body.dressID, dressName: req.body.dressName, price: req.body.price}
+      });
+      await checkout.save();
+      res.status(200).json({ message: "Checkout successful" })
+      }
+
+  catch(e){
+      res.status(400).json({ message: "Cannot checkout" })
+      }
+  }
 
 
 
-export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, removeOrder, sendMessage, getMessage};
+export {userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, removeOrder, sendMessage, getMessage, checkout};

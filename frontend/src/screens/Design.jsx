@@ -257,7 +257,8 @@ const Design = () => {
 
 
   return (
-
+    <div>
+    <Navbar />
     <div className="min-h-screen bg-gradient-to-r from-amber-200 to-pink-200 flex justify-center items-center">
       <div className=" bg-white rounded-lg shadow-lg shadow-black p-9 max-w-6xl w-full">
         <div className="text-center text-4xl font-bold text-amber-500 mb-8">
@@ -451,7 +452,7 @@ const Design = () => {
         </div>
       </div>
     </div>
-        
+    </div>
   );
 };
 

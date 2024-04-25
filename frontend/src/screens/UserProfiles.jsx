@@ -7,8 +7,16 @@ const UserProfiles = () => {
     const [userProfile, setUserProfile] = useState([]);
     useEffect(() => getUsers, []);
 
-
     const getUsers = async () => {
+        // Session Email
+        const res2 = await fetch("http://localhost:3000/api/profile", {
+          method: "GET",
+          credentials: "include"
+        }
+        );
+        const data2 = await res2.json();
+
+        // Database
         const res = await fetch('http://localhost:3000/api/getusers', {
             method: "GET",
             credentials: "include"
@@ -18,6 +26,7 @@ const UserProfiles = () => {
 
         let userProfiles = []
         for (let i = 0; i < data.data.length; i++){
+          if (data2.email !== data.data[i].email){
           userProfiles.push(
             <div key = {i} className='border-solid border-2 border-amber-500 mx-12 my-10 p-4 px-5'>
               <p> Name: <span>{data.data[i].fname}</span> <span>{data.data[i].lname}</span></p>
@@ -25,7 +34,7 @@ const UserProfiles = () => {
               <Button fname={data.data[i].fname} lname={data.data[i].lname} email={data.data[i].email} className="my-2 d-block bg-orange-300 mr-2" style={{width:'100px'}} onClick={follow}>Follow</Button>
             </div>
             
-          );
+          );}
       }
       setUserProfile(userProfiles);
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import {  userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, removeOrder, getMessage, sendMessage } from '../controllers/userController.js';
+import {  userRegister, userLogin, userLogout, userProfile, userProfileUpdate, saveDress, shareDress, getUsers, follow, getOrder, postOrder, removeOrder, getMessage, sendMessage, checkout } from '../controllers/userController.js';
 import verifyToken from '../middleware/verifyToken.js';
 
 const router = express.Router();
@@ -18,5 +18,6 @@ router.post('/order', verifyToken, postOrder);
 router.post('/removeorder', verifyToken, removeOrder);
 router.post('/message', verifyToken, sendMessage);
 router.get('/message', verifyToken, getMessage);
+router.post('/checkout', verifyToken, checkout)
 
 export default router;

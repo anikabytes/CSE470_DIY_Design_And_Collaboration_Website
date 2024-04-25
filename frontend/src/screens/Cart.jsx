@@ -29,7 +29,11 @@ const Cart = () => {
                 <img src={data.data[i].image} alt="" style={{width:'100px'}}/>
                 <p>Name: {data.data[i].name}</p>
                 <p>Price: {data.data[i].price}</p>
-                <Button dressid={data.data[i].id} name={data.data[i].name} image={data.data[i].productImages} price={data.data[i].price} className="my-2 d-block bg-red-300" style={{width:'100px'}} onClick={removeOrder}>Remove</Button>
+                <div className='flex flex-col'>
+                    <Button dressid={data.data[i].id} name={data.data[i].name} image={data.data[i].productImages} price={data.data[i].price} className="my-2 d-block bg-red-300" style={{width:'100px'}} onClick={removeOrder}>Remove</Button>
+                    <Button dressid={data.data[i].id} name={data.data[i].name} price={data.data[i].price} className="my-2 d-block bg-green-300" style={{width:'100px'}} onClick={checkout}>Checkout</Button>
+                </div>
+                
             </div>
             
             );
@@ -40,7 +44,6 @@ const Cart = () => {
 
       const removeOrder = async (e) => {
         const currId = e.currentTarget.getAttribute("dressid")
-
 
         const res = await fetch("http://localhost:3000/api/removeorder", {
         method: "POST",
@@ -55,8 +58,24 @@ const Cart = () => {
 
     }
 
-      const checkout = (e) => {
-        alert("Thank You!");
+      const checkout = async (e) => {
+        const currId = e.currentTarget.getAttribute("dressid")
+        const name = e.currentTarget.getAttribute("name");
+        const price = e.currentTarget.getAttribute("price");
+
+        console.log(currId, name, price);
+        const res = await fetch("http://localhost:3000/api/checkout", {
+        method: "POST",
+        credentials: "include",
+        headers: {"Content-type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+            dressId: currId,
+            dressName: name,
+            price: price,
+        })
+      })
+
+      alert("Thank you for your purchase. It will be confirmed shortly!")
       }
 
     return(
@@ -68,7 +87,7 @@ const Cart = () => {
             </div>
             <p className='text-amber-500 ml-7'>Total price: {totalPrice}</p>
             <div className='flex flex-row'>
-                <Button className="my-2 d-block bg-green-300 ml-7" style={{width:'100px'}} onClick={checkout}>Checkout</Button>
+               
             </div>
         </div>
     )
