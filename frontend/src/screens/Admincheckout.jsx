@@ -18,7 +18,7 @@ const confirmed = async (e) => {
         .catch((error) => {
             console.log(error);
             alert(error);
-        });
+        });}
 
 const Checkout = () => {
   const [checkouts, setCheckouts] = useState([]);
