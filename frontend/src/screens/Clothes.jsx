@@ -37,7 +37,7 @@ const Clothes = () => {
                 <p className="mb-4 text-amber-900">{data[i].price}</p>
                 <p className="text-lg font-semibold mb-2 text-amber-700">Designed By:</p>
                 <p className="mb-4 text-amber-900">{data[i].designedby}</p>
-                <Button name={data[i].name} image={data[i].productImages} price={data[i].price} className="my-2 d-block bg-orange-300" style={{width:'120px'}} onClick={order}>Order Now</Button>
+                <Button dressid={data[i]._id} name={data[i].name} image={data[i].productImages} price={data[i].price} className="my-2 d-block bg-orange-300" style={{width:'120px'}} onClick={order}>Order Now</Button>
               </div>
             </div>
             </div>
@@ -54,16 +54,18 @@ const Clothes = () => {
   }, []);
 
   const order = async (e) => {
+      const dressid = e.currentTarget.getAttribute("dressid");
       const name = e.currentTarget.getAttribute("name");
       const img = e.currentTarget.getAttribute("image");
       const price = e.currentTarget.getAttribute("price");
-      
+
+      console.log()
       const res = await fetch("http://localhost:3000/api/order", {
         method: "POST",
         credentials: "include",
         headers: {"Content-type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({
-          
+          id: dressid,
           name: name,
           img: img,
           price: price
