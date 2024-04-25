@@ -1,5 +1,6 @@
 import express from "express";
 import Product from "../models/productModel.js";
+import Checkout from '../models/checkoutModel.js'
 
 
 const router = express.Router();
