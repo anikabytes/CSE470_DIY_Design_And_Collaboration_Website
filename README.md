@@ -10,7 +10,7 @@ Garbage Free
 
 
 # TASFIYA BUSHRA
-##  Admin can track and confirm order
+##  Admin can track and confirm order/remove
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/05d02c57-eb21-4e2e-afba-0a7b3091c22b)
 
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/10937b57-baaa-49b0-a0fa-cd5e9ddade65)
