@@ -3,7 +3,7 @@ import axios from 'axios';
 import Spinner from '../component/Spinner';
 import { Link } from 'react-router-dom';
 import { MdScreenSearchDesktop } from 'react-icons/md';
-import Navbar from '../component/Navbar';
+import AdminNav from '../component/AdminNav';
 import Display from '../component/Display';
 
 const ShowItems = () => {
@@ -25,7 +25,8 @@ const ShowItems = () => {
   }, []);
 
   return (
-    <div className='bg-blue-200'>
+    <div >
+      <AdminNav />
       <div className='flex justify-between items-center p-4'>
         <h1 className='text-3xl my-8'>Products list</h1>
         <div className='flex items-center'>
