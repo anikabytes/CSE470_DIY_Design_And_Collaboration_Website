@@ -34,7 +34,7 @@ const Clothes = () => {
                 <p className="mb-4 text-amber-900">{data[i].price}</p>
                 <p className="text-lg font-semibold mb-2 text-amber-700">Designed By:</p>
                 <p className="mb-4 text-amber-900">{data[i].designedby}</p>
-                <Button name={data[i].name} image={data[i].productImages} price={data[i].price} className="my-2 d-block bg-orange-300" style={{width:'120px'}} onClick={order}>Order Now</Button>
+                <Button dress_id={data[i]._id} name={data[i].name} image={data[i].productImages} price={data[i].price} className="my-2 d-block bg-orange-300" style={{width:'120px'}} onClick={order}>Order Now</Button>
               </div>
             </div>
             </div>
@@ -54,12 +54,16 @@ const Clothes = () => {
       const name = e.currentTarget.getAttribute("name");
       const img = e.currentTarget.getAttribute("image");
       const price = e.currentTarget.getAttribute("price");
+      const id = e.currentTarget.getAttribute("dress_id");
       
+      console.log(id)
+
       const res = await fetch("http://localhost:3000/api/order", {
         method: "POST",
         credentials: "include",
         headers: {"Content-type": "application/x-www-form-urlencoded"},
         body: new URLSearchParams({
+          id: id,
           name: name,
           img: img,
           price: price
@@ -80,8 +84,11 @@ const Clothes = () => {
   return (
     <div>
         <Navbar />
+        
         <h1 className='text-4xl font-bold mb-3 text-amber-500 ml-6 my-2'>Designs of the creative minds like you!</h1>
         {items}
+
+
     </div>
   );
 };
