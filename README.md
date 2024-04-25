@@ -10,7 +10,11 @@ Garbage Free
 
 
 # TASFIYA BUSHRA
-## 
+##  Admin can track and confirm order
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/05d02c57-eb21-4e2e-afba-0a7b3091c22b)
+
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/10937b57-baaa-49b0-a0fa-cd5e9ddade65)
+
 
 
 # RISAT RAHAMAN
@@ -21,4 +25,8 @@ Garbage Free
 
 
 # TANJILUR RAHMAN
-##
+##Admin can remove design
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/9cf0d8e9-8875-460f-ba29-fdb2f76097eb)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/5bdcb6a9-af02-4d0b-bdfc-7116c121a346)
+
+
