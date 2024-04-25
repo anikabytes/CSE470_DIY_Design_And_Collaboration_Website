@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import cookieParser from 'cookie-parser';
 import product from './routes/productRoute.js';
+import admin from './routes/admin.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -28,8 +29,9 @@ app.use(cors({
 
 app.use('/api', userRoutes);
 
-app.use('/', product);
+app.use('/clothes', product);
 
+app.use('/admin', admin)
 
 app.get('/', (req, res) => res.send('Server is running'));
 
