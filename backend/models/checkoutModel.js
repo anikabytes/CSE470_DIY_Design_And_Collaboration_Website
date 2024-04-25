@@ -17,8 +17,8 @@ const checkoutSchema = mongoose.Schema({
     },
 
     order: {
-        type: [Object],
-        default: []
+        type: Object,
+        default: {}
     }
 
 });
