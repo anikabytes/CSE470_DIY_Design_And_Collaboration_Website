@@ -5,14 +5,20 @@ Garbage Free
 
 # ANIKA ISLAM
 ## Users can follow each other
+##updated home page of user and admin 
+##updated design page
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/a34c5b06-867c-4324-99f6-b4156d66a334)
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/2de37c3a-59b8-4cc6-abc2-16e593555900)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/db1ded45-befc-44ea-bbf3-31b41ad0b604)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/26c7e51c-7770-48bf-a09b-4c8416d8dcbb)
+![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/7fcb0744-1d36-4eca-9cc8-ffd70169b765)
+
+
 
 
 # TASFIYA BUSHRA
 ##  Admin can track and confirm/remove order
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/05d02c57-eb21-4e2e-afba-0a7b3091c22b)
-
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/10937b57-baaa-49b0-a0fa-cd5e9ddade65)
 
 
