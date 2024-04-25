@@ -7,6 +7,7 @@ import Searchitems from './screens/searchitems'
 import Cart from './screens/Cart';
 import Admindesgin from './screens/admindesignpage';
 import AdminHome from './screens/AdminHome';
+import AdminChekout from './screens/AdminCheckout';
 
 
 import {
@@ -39,6 +40,7 @@ function App() {
 
         <Route path='/admin' element={<AdminHome />}/>
         <Route path='/admin/design' element={<Admindesgin />}/>
+        <Route path='/admin/checkout' element={<AdminChekout />}/>
 
 
       </Routes>

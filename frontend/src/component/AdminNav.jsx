@@ -5,24 +5,7 @@ import { CiMenuFries } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const [value, setValue] = useState('');
-
-    useEffect(() => getProfile, []);
-
-  const getProfile = async () => {
-    const res = await fetch("http://localhost:3000/api/profile", {
-        method: "GET",
-        credentials: "include"
-      }
-      );
-    const data = await res.json();
-    if (res.status != 200){
-      setValue('Sign In')
-    }
-    else{
-      setValue('Profile')
-    }
-  }
+    
     return (
             <nav>
                <div className="h-10vh flex justify-between z-50  text-white lg:py-5 px-20 py-4 transition bg-orange-300">
