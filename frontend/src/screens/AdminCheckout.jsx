@@ -5,7 +5,6 @@ import { TiTick } from "react-icons/ti";
 import AdminNav from '../component/AdminNav';
 import { Button } from 'react-bootstrap';
 
-
 const confirmed = async (e) => {
     axios
         .delete(`http://localhost:3000/admin/checkout/${e.currentTarget.getAttribute("id")}`)
@@ -23,15 +22,11 @@ const confirmed = async (e) => {
         });
 
 
-
-
 };
-
 
 const Checkout = () => {
   const [checkouts, setCheckouts] = useState([]);
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     setLoading(true);
@@ -47,7 +42,6 @@ const Checkout = () => {
       });
   }, []);
 
-
   return (
     <div className='p-4'>
         <AdminNav />
@@ -60,15 +54,14 @@ const Checkout = () => {
               <th className='border border-slate-600 rounded-md'>No</th>
               <th className='border border-slate-600 rounded-md'>Ordered By</th>
               <th className='border border-slate-600 rounded-md'>Item</th>
-              <th className='border border-slate-600 rounded-md max-md'>Price</th>
-              <th className='border border-slate-600 rounded-md max-md'>Confirmation Pending</th>
+              <th className='border border-slate-600 rounded-md'>Price</th>
+              <th className='border border-slate-600 rounded-md'>Confirmation Pending</th>
             </tr>
           </thead>
           <tbody>
           {checkouts.map((item, index) => (
 
-
-    <tr className='h-8'>
+    <tr key={item._id} className='h-8'>
       <th className='border border-slate-700 rounded-md text-center'>
         {index + 1}
       </th>
@@ -76,21 +69,20 @@ const Checkout = () => {
         {item.username}
       </td>
       <td className='border border-slate-700 rounded-md text-center'>
-        {item.order.name}
+        {item.order.dressName}
       </td>
-      <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-        {item.order.price}
+      <td className='border border-slate-700 rounded-md text-center'>
+        {item.order.dressName}
       </td>
       <td className='border border-slate-700 rounded-md text-center'>
         <div className='flex justify items-center'>
             <Button id={item._id} user_mail={item.email} className="my-2 d-flex align-items-center bg-orange-300" onClick={confirmed}>
                 <span className="mr-1 text-black">Checkout Comfirmed</span>
                 <TiTick className='text-2xl text-red-500' />
-            </Button>      
+            </Button>       
         </div>
       </td>
     </tr>
-
 
 ))}
           </tbody>
@@ -100,6 +92,4 @@ const Checkout = () => {
   )
 };
 
-
 export default Checkout;
-
