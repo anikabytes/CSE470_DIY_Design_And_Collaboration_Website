@@ -75,7 +75,7 @@ const Cart = () => {
         })
       })
 
-      alert("Thank you for your purchase. It will be confirmed shortly!")
+      alert("Thank you for your purchase. It will be delivered shortly!")
       }
 
     return(
