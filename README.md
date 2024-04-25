@@ -4,9 +4,8 @@ Garbage Free
  CSE470_DIY_Design_And_Collaboration_Website
 
 # ANIKA ISLAM
-## Users can follow each other
-##updated home page of user and admin 
-##updated design page
+## Users can follow each other. Updated Userhomepage,admin Homepage, design page
+
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/a34c5b06-867c-4324-99f6-b4156d66a334)
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/2de37c3a-59b8-4cc6-abc2-16e593555900)
 ![image](https://github.com/anikabytes/CSE470_DIY_Design_And_Collaboration_Website/assets/158143231/db1ded45-befc-44ea-bbf3-31b41ad0b604)
