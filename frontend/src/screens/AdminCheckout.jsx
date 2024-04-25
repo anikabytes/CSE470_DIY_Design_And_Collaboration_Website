@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../component/Spinner';
 import { TiTick } from "react-icons/ti";
-import AdminNav from '../component/AdminNav'
+import AdminNav from '../component/AdminNav';
+import { Button } from 'react-bootstrap';
+
 
 const confirmed = async (e) => {
     axios
-        .delete(`http://localhost:3000/admin/chekout/${e.currentTarget.getAttribute("id")}`)
+        .delete(`http://localhost:3000/admin/checkout/${e.currentTarget.getAttribute("id")}`)
         .then((response) => {
             if (response.status === 200) {
                 alert("Removed Design Successfully");
@@ -18,11 +20,18 @@ const confirmed = async (e) => {
         .catch((error) => {
             console.log(error);
             alert(error);
-        });}
+        });
+
+
+
+
+};
+
 
 const Checkout = () => {
   const [checkouts, setCheckouts] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     setLoading(true);
@@ -37,6 +46,7 @@ const Checkout = () => {
         setLoading(false);
       });
   }, []);
+
 
   return (
     <div className='p-4'>
@@ -57,6 +67,7 @@ const Checkout = () => {
           <tbody>
           {checkouts.map((item, index) => (
 
+
     <tr className='h-8'>
       <th className='border border-slate-700 rounded-md text-center'>
         {index + 1}
@@ -75,10 +86,11 @@ const Checkout = () => {
             <Button id={item._id} user_mail={item.email} className="my-2 d-flex align-items-center bg-orange-300" onClick={confirmed}>
                 <span className="mr-1 text-black">Checkout Comfirmed</span>
                 <TiTick className='text-2xl text-red-500' />
-            </Button>       
+            </Button>      
         </div>
       </td>
     </tr>
+
 
 ))}
           </tbody>
@@ -88,4 +100,6 @@ const Checkout = () => {
   )
 };
 
+
 export default Checkout;
+
