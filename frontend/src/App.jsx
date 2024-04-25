@@ -6,7 +6,7 @@ import Design from './screens/Design';
 import Searchitems from './screens/searchitems'
 import Cart from './screens/Cart';
 import Admindesgin from './screens/admindesignpage';
-import Admindesginsearch from './screens/search';
+
 
 import {
   BrowserRouter,
@@ -36,7 +36,6 @@ function App() {
         <Route path='/message' element={<Message />}/>
         <Route path='/' element={<Home />}/>
         <Route path='/admin/design' element={<Admindesgin />}/>
-        <Route path='/admin/search/:searchStirng' element={<Admindesginsearch />}/>
 
 
       </Routes>
